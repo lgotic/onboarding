@@ -6,8 +6,23 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_F1X2" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Slika 6</Translation>
+      </Text>
+      <Text Id="__SingleUse_QTEC" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Slika 5</Translation>
+      </Text>
+      <Text Id="__SingleUse_JP7Q" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Slika 4</Translation>
+      </Text>
+      <Text Id="__SingleUse_F2JG" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Slika 3</Translation>
+      </Text>
+      <Text Id="__SingleUse_YXOU" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Slika 2</Translation>
+      </Text>
       <Text Id="__SingleUse_BAJZ" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">New Text</Translation>
+        <Translation Language="GB">Slika 1</Translation>
       </Text>
     </TextGroup>
   </Texts>

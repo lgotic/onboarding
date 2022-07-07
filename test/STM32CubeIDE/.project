@@ -300,6 +300,31 @@
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/containers/opcija1.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/gui/opcija2.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/containers/opcija2.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/opcija3.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/containers/opcija3.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/opcija4.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/containers/opcija4.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/opcija5.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/containers/opcija5.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/opcija6.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/containers/opcija6.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/gui/Model.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/model/Model.cpp</locationURI>
@@ -405,6 +430,31 @@
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/containers/opcija1Base.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/opcija2Base.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/containers/opcija2Base.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/opcija3Base.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/containers/opcija3Base.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/opcija4Base.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/containers/opcija4Base.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/opcija5Base.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/containers/opcija5Base.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/opcija6Base.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/containers/opcija6Base.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/Screen1ViewBase.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/screen1_screen/Screen1ViewBase.cpp</locationURI>
@@ -418,16 +468,6 @@
 			<name>Application/User/generated/BitmapDatabase.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/BitmapDatabase.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/image_Blue_Buttons_Round_Edge_small.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/__designer/image_Blue_Buttons_Round_Edge_small.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/image_Blue_Buttons_Round_Edge_small_pressed.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/__designer/image_Blue_Buttons_Round_Edge_small_pressed.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/image_background_Screen2.cpp</name>

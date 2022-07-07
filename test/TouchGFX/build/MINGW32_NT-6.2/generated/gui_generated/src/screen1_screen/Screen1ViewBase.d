@@ -42,10 +42,24 @@ build/MINGW32_NT-6.2/generated/gui_generated/src/screen1_screen/Screen1ViewBase.
  gui/include/gui/model/ModelListener.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Widget.hpp \
- ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp \
- ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp \
- ../Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp \
- generated/images/include/BitmapDatabase.hpp
+ gui/include/gui/containers/opcija1.hpp \
+ generated/gui_generated/include/gui_generated/containers/opcija1Base.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/TypedText.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/Texts.hpp \
+ gui/include/gui/containers/opcija2.hpp \
+ generated/gui_generated/include/gui_generated/containers/opcija2Base.hpp \
+ gui/include/gui/containers/opcija3.hpp \
+ generated/gui_generated/include/gui_generated/containers/opcija3Base.hpp \
+ gui/include/gui/containers/opcija4.hpp \
+ generated/gui_generated/include/gui_generated/containers/opcija4Base.hpp \
+ gui/include/gui/containers/opcija5.hpp \
+ generated/gui_generated/include/gui_generated/containers/opcija5Base.hpp \
+ gui/include/gui/containers/opcija6.hpp \
+ generated/gui_generated/include/gui_generated/containers/opcija6Base.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/EasingEquations.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/MoveAnimator.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp
 
 generated/gui_generated/include/gui_generated/screen1_screen/Screen1ViewBase.hpp:
 
@@ -131,10 +145,38 @@ gui/include/gui/model/ModelListener.hpp:
 
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Widget.hpp:
 
-../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp:
+gui/include/gui/containers/opcija1.hpp:
 
-../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp:
+generated/gui_generated/include/gui_generated/containers/opcija1Base.hpp:
+
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp:
+
+../Middlewares/ST/touchgfx/framework/include/touchgfx/TypedText.hpp:
+
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Texts.hpp:
+
+gui/include/gui/containers/opcija2.hpp:
+
+generated/gui_generated/include/gui_generated/containers/opcija2Base.hpp:
+
+gui/include/gui/containers/opcija3.hpp:
+
+generated/gui_generated/include/gui_generated/containers/opcija3Base.hpp:
+
+gui/include/gui/containers/opcija4.hpp:
+
+generated/gui_generated/include/gui_generated/containers/opcija4Base.hpp:
+
+gui/include/gui/containers/opcija5.hpp:
+
+generated/gui_generated/include/gui_generated/containers/opcija5Base.hpp:
+
+gui/include/gui/containers/opcija6.hpp:
+
+generated/gui_generated/include/gui_generated/containers/opcija6Base.hpp:
+
+../Middlewares/ST/touchgfx/framework/include/touchgfx/EasingEquations.hpp:
+
+../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/MoveAnimator.hpp:
 
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp:
-
-generated/images/include/BitmapDatabase.hpp:

@@ -8,7 +8,14 @@
 #include <mvp/View.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/Button.hpp>
+#include <gui/containers/opcija1.hpp>
+#include <gui/containers/opcija2.hpp>
+#include <gui/containers/opcija3.hpp>
+#include <gui/containers/opcija4.hpp>
+#include <gui/containers/opcija5.hpp>
+#include <gui/containers/opcija6.hpp>
+#include <touchgfx/EasingEquations.hpp>
+#include <touchgfx/mixins/MoveAnimator.hpp>
 
 class Screen1ViewBase : public touchgfx::View<Screen1Presenter>
 {
@@ -28,9 +35,34 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box box1;
-    touchgfx::Button button1;
+    touchgfx::MoveAnimator< opcija1 > opcija11;
+    touchgfx::MoveAnimator< opcija2 > opcija21;
+    touchgfx::MoveAnimator< opcija3 > opcija31;
+    touchgfx::MoveAnimator< opcija4 > opcija41;
+    touchgfx::MoveAnimator< opcija5 > opcija51;
+    touchgfx::MoveAnimator< opcija6 > opcija61;
 
 private:
+    /*
+     * Interaction Callback Declarations
+     */
+    touchgfx::Callback < Screen1ViewBase, const touchgfx::MoveAnimator<opcija1>& > moveOptionOneEndedCallback;
+    touchgfx::Callback < Screen1ViewBase, const touchgfx::MoveAnimator<opcija2>& > moveOpetionTwoEndedCallback;
+    touchgfx::Callback < Screen1ViewBase, const touchgfx::MoveAnimator<opcija3>& > moveOptionThreeEndedCallback;
+    touchgfx::Callback < Screen1ViewBase, const touchgfx::MoveAnimator<opcija4>& > moveOpetionFourEndedCallback;
+    touchgfx::Callback < Screen1ViewBase, const touchgfx::MoveAnimator<opcija5>& > moveOptionFiveEndedCallback;
+    touchgfx::Callback < Screen1ViewBase, const touchgfx::MoveAnimator<opcija6>& > moveOptionSixEndedCallback;
+
+
+    /*
+     * Interaction Handlers
+     */
+    void moveOptionOneEndedCallbackHandler(const touchgfx::MoveAnimator<opcija1>& comp);
+    void moveOpetionTwoEndedCallbackHandler(const touchgfx::MoveAnimator<opcija2>& comp);
+    void moveOptionThreeEndedCallbackHandler(const touchgfx::MoveAnimator<opcija3>& comp);
+    void moveOpetionFourEndedCallbackHandler(const touchgfx::MoveAnimator<opcija4>& comp);
+    void moveOptionFiveEndedCallbackHandler(const touchgfx::MoveAnimator<opcija5>& comp);
+    void moveOptionSixEndedCallbackHandler(const touchgfx::MoveAnimator<opcija6>& comp);
 
 };
 

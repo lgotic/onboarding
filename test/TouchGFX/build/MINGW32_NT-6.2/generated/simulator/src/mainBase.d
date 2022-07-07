@@ -59,9 +59,6 @@ build/MINGW32_NT-6.2/generated/simulator/src/mainBase.o: \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/Transition.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/Container.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp \
- ../Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/WipeTransition.hpp \
- ../Middlewares/ST/touchgfx/framework/include/touchgfx/EasingEquations.hpp \
- ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Widget.hpp \
  gui/include/gui/common/FrontendApplication.hpp \
  generated/gui_generated/include/gui_generated/common/FrontendApplicationBase.hpp \
  ../Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp \
@@ -74,8 +71,22 @@ build/MINGW32_NT-6.2/generated/simulator/src/mainBase.o: \
  gui/include/gui/screen1_screen/Screen1Presenter.hpp \
  gui/include/gui/model/ModelListener.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp \
- ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp \
- ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Widget.hpp \
+ gui/include/gui/containers/opcija1.hpp \
+ generated/gui_generated/include/gui_generated/containers/opcija1Base.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp \
+ gui/include/gui/containers/opcija2.hpp \
+ generated/gui_generated/include/gui_generated/containers/opcija2Base.hpp \
+ gui/include/gui/containers/opcija3.hpp \
+ generated/gui_generated/include/gui_generated/containers/opcija3Base.hpp \
+ gui/include/gui/containers/opcija4.hpp \
+ generated/gui_generated/include/gui_generated/containers/opcija4Base.hpp \
+ gui/include/gui/containers/opcija5.hpp \
+ generated/gui_generated/include/gui_generated/containers/opcija5Base.hpp \
+ gui/include/gui/containers/opcija6.hpp \
+ generated/gui_generated/include/gui_generated/containers/opcija6Base.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/EasingEquations.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/MoveAnimator.hpp \
  gui/include/gui/screen2_screen/Screen2View.hpp \
  generated/gui_generated/include/gui_generated/screen2_screen/Screen2ViewBase.hpp \
  gui/include/gui/screen2_screen/Screen2Presenter.hpp \
@@ -201,12 +212,6 @@ generated/gui_generated/include/gui_generated/common/FrontendHeapBase.hpp:
 
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:
 
-../Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/WipeTransition.hpp:
-
-../Middlewares/ST/touchgfx/framework/include/touchgfx/EasingEquations.hpp:
-
-../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Widget.hpp:
-
 gui/include/gui/common/FrontendApplication.hpp:
 
 generated/gui_generated/include/gui_generated/common/FrontendApplicationBase.hpp:
@@ -231,9 +236,37 @@ gui/include/gui/model/ModelListener.hpp:
 
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp:
 
-../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Widget.hpp:
 
-../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp:
+gui/include/gui/containers/opcija1.hpp:
+
+generated/gui_generated/include/gui_generated/containers/opcija1Base.hpp:
+
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp:
+
+gui/include/gui/containers/opcija2.hpp:
+
+generated/gui_generated/include/gui_generated/containers/opcija2Base.hpp:
+
+gui/include/gui/containers/opcija3.hpp:
+
+generated/gui_generated/include/gui_generated/containers/opcija3Base.hpp:
+
+gui/include/gui/containers/opcija4.hpp:
+
+generated/gui_generated/include/gui_generated/containers/opcija4Base.hpp:
+
+gui/include/gui/containers/opcija5.hpp:
+
+generated/gui_generated/include/gui_generated/containers/opcija5Base.hpp:
+
+gui/include/gui/containers/opcija6.hpp:
+
+generated/gui_generated/include/gui_generated/containers/opcija6Base.hpp:
+
+../Middlewares/ST/touchgfx/framework/include/touchgfx/EasingEquations.hpp:
+
+../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/MoveAnimator.hpp:
 
 gui/include/gui/screen2_screen/Screen2View.hpp:
 

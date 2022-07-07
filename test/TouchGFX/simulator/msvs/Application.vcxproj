@@ -29,6 +29,16 @@
     <ClCompile Include="..\..\gui\src\screen2_screen\Screen2Presenter.cpp"/>
     <ClCompile Include="..\..\gui\src\screen2_screen\Screen2View.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\screen2_screen\Screen2ViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\opcija2.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\opcija2Base.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\opcija3.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\opcija3Base.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\opcija4.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\opcija4Base.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\opcija5.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\opcija5Base.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\opcija6.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\opcija6Base.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -187,6 +197,16 @@
     <ClInclude Include="..\..\gui\include\gui\screen2_screen\Screen2Presenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\screen2_screen\Screen2View.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen2_screen\Screen2ViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\opcija2.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\opcija2Base.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\opcija3.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\opcija3Base.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\opcija4.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\opcija4Base.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\opcija5.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\opcija5Base.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\opcija6.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\opcija6Base.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

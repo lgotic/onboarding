@@ -11,26 +11,243 @@
             "Height": 240
           },
           {
-            "Type": "Button",
-            "Name": "button1",
-            "Width": 170,
-            "Height": 60,
-            "Pressed": "__designer\\Blue_Buttons_Round_Edge_small_pressed.png",
-            "Released": "__designer\\Blue_Buttons_Round_Edge_small.png",
-            "Style": "Style4"
+            "Type": "CustomContainerInstance",
+            "Name": "opcija11",
+            "Width": 250,
+            "Height": 39,
+            "CustomContainerDefinitionName": "opcija1"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "opcija21",
+            "Y": 39,
+            "Width": 250,
+            "Height": 40,
+            "CustomContainerDefinitionName": "opcija2"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "opcija31",
+            "Y": 80,
+            "Width": 250,
+            "Height": 40,
+            "CustomContainerDefinitionName": "opcija3"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "opcija41",
+            "Y": 120,
+            "Width": 250,
+            "Height": 40,
+            "CustomContainerDefinitionName": "opcija4"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "opcija51",
+            "Y": 160,
+            "Width": 250,
+            "Height": 40,
+            "CustomContainerDefinitionName": "opcija5"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "opcija61",
+            "Y": 200,
+            "Width": 250,
+            "Height": 40,
+            "CustomContainerDefinitionName": "opcija6"
           }
         ],
         "Interactions": [
           {
-            "InteractionName": "Interaction1",
+            "InteractionName": "moveOptionOne",
+            "HasCompletedTrigger": true,
             "Trigger": {
-              "Type": "TriggerPhysicalButtonClicked"
+              "Type": "TriggerPhysicalButtonClicked",
+              "Name": "HW_Push"
             },
             "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionWipe",
-              "ScreenTransitionDirection": "East",
-              "ActionComponent": "Screen2"
+              "Type": "ActionMove",
+              "X": 20,
+              "Easing": "Linear",
+              "EasingOption": "Out",
+              "Duration": 50,
+              "ActionComponent": "opcija11"
+            }
+          },
+          {
+            "InteractionName": "moveOpetionTwo",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 1,
+              "Name": "NONE"
+            },
+            "Action": {
+              "Type": "ActionMove",
+              "X": 20,
+              "Y": 39,
+              "Easing": "Linear",
+              "EasingOption": "Out",
+              "Duration": 50,
+              "ActionComponent": "opcija21"
+            }
+          },
+          {
+            "InteractionName": "moveOptionThree",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 2
+            },
+            "Action": {
+              "Type": "ActionMove",
+              "X": 20,
+              "Y": 80,
+              "Easing": "Linear",
+              "EasingOption": "Out",
+              "Duration": 50,
+              "ActionComponent": "opcija31"
+            }
+          },
+          {
+            "InteractionName": "moveOptionOneBack",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "moveOpetionTwo"
+            },
+            "Action": {
+              "Type": "ActionMove",
+              "Easing": "Linear",
+              "EasingOption": "Out",
+              "Duration": 20,
+              "ActionComponent": "opcija11"
+            }
+          },
+          {
+            "InteractionName": "moveOptionTwoBack",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "moveOptionThree"
+            },
+            "Action": {
+              "Type": "ActionMove",
+              "Y": 39,
+              "Easing": "Linear",
+              "EasingOption": "In",
+              "Duration": 50,
+              "ActionComponent": "opcija21"
+            }
+          },
+          {
+            "InteractionName": "moveOpetionFour",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 3
+            },
+            "Action": {
+              "Type": "ActionMove",
+              "X": 20,
+              "Y": 120,
+              "Easing": "Linear",
+              "EasingOption": "In",
+              "Duration": 50,
+              "ActionComponent": "opcija41"
+            }
+          },
+          {
+            "InteractionName": "moveOptionFive",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 4
+            },
+            "Action": {
+              "Type": "ActionMove",
+              "X": 20,
+              "Y": 160,
+              "Easing": "Linear",
+              "EasingOption": "In",
+              "Duration": 50,
+              "ActionComponent": "opcija51"
+            }
+          },
+          {
+            "InteractionName": "moveOptionSix",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 5
+            },
+            "Action": {
+              "Type": "ActionMove",
+              "X": 20,
+              "Y": 200,
+              "Easing": "Linear",
+              "EasingOption": "In",
+              "Duration": 50,
+              "ActionComponent": "opcija61"
+            }
+          },
+          {
+            "InteractionName": "moveOptionThreeBack",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "moveOpetionFour"
+            },
+            "Action": {
+              "Type": "ActionMove",
+              "Y": 80,
+              "Easing": "Linear",
+              "EasingOption": "In",
+              "Duration": 50,
+              "ActionComponent": "opcija31"
+            }
+          },
+          {
+            "InteractionName": "moveOpetionFourBack",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "moveOptionFive"
+            },
+            "Action": {
+              "Type": "ActionMove",
+              "Y": 120,
+              "Easing": "Linear",
+              "EasingOption": "In",
+              "Duration": 50,
+              "ActionComponent": "opcija41"
+            }
+          },
+          {
+            "InteractionName": "moveOptionFiveBack",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "moveOptionSix"
+            },
+            "Action": {
+              "Type": "ActionMove",
+              "Y": 160,
+              "Easing": "Linear",
+              "EasingOption": "In",
+              "Duration": 50,
+              "ActionComponent": "opcija51"
+            }
+          },
+          {
+            "InteractionName": "moveOptionSixBack",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "moveOptionOne"
+            },
+            "Action": {
+              "Type": "ActionMove",
+              "Y": 200,
+              "Easing": "Linear",
+              "EasingOption": "In",
+              "Duration": 50,
+              "ActionComponent": "opcija61"
             }
           }
         ]
@@ -69,9 +286,159 @@
             "Name": "textArea1",
             "X": 12,
             "Y": 7,
-            "Width": 92,
+            "Width": 68,
             "Height": 24,
             "TextId": "__SingleUse_BAJZ",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "opcija2",
+        "Width": 250,
+        "Height": 40,
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 250,
+            "Height": 39
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 12,
+            "Y": 8,
+            "Width": 68,
+            "Height": 24,
+            "TextId": "__SingleUse_YXOU",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "opcija3",
+        "Width": 250,
+        "Height": 40,
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 250,
+            "Height": 39
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 12,
+            "Y": 8,
+            "Width": 68,
+            "Height": 24,
+            "TextId": "__SingleUse_F2JG",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "opcija4",
+        "Width": 250,
+        "Height": 40,
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 250,
+            "Height": 39
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 12,
+            "Y": 8,
+            "Width": 68,
+            "Height": 24,
+            "TextId": "__SingleUse_JP7Q",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "opcija5",
+        "Width": 250,
+        "Height": 40,
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 250,
+            "Height": 39
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 12,
+            "Y": 8,
+            "Width": 68,
+            "Height": 24,
+            "TextId": "__SingleUse_QTEC",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "opcija6",
+        "Width": 250,
+        "Height": 40,
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 250,
+            "Height": 39
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 12,
+            "Y": 8,
+            "Width": 68,
+            "Height": 24,
+            "TextId": "__SingleUse_F1X2",
             "TextRotation": "0",
             "Color": {
               "Red": 255,
