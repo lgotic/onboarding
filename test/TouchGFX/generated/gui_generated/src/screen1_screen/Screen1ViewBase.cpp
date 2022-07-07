@@ -108,6 +108,48 @@ void Screen1ViewBase::handleKeyEvent(uint8_t key)
         opcija61.startMoveAnimation(20, 200, 3, touchgfx::EasingEquations::linearEaseIn, touchgfx::EasingEquations::linearEaseIn);
         opcija61.setMoveAnimationEndedAction(moveOptionSixEndedCallback);
     }
+    if(10 == key)
+    {
+        //changeToSlika1
+        //When hardware button 10 clicked change screen to slika1
+        //Go to slika1 with no screen transition
+        application().gotoslika1ScreenNoTransition();
+    }
+    if(11 == key)
+    {
+        //changeToSlika2
+        //When hardware button 11 clicked change screen to slika2
+        //Go to slika2 with no screen transition
+        application().gotoslika2ScreenNoTransition();
+    }
+    if(12 == key)
+    {
+        //changeToSlika3
+        //When hardware button 12 clicked change screen to slika3
+        //Go to slika3 with no screen transition
+        application().gotoslika3ScreenNoTransition();
+    }
+    if(13 == key)
+    {
+        //changeToSlika4
+        //When hardware button 13 clicked change screen to slika4
+        //Go to slika4 with no screen transition
+        application().gotoslika4ScreenNoTransition();
+    }
+    if(14 == key)
+    {
+        //changeToSlika5
+        //When hardware button 14 clicked change screen to slika5
+        //Go to slika5 with no screen transition
+        application().gotoslika5ScreenNoTransition();
+    }
+    if(15 == key)
+    {
+        //changeToSlika6
+        //When hardware button 15 clicked change screen to slika6
+        //Go to slika6 with no screen transition
+        application().gotoslika6ScreenNoTransition();
+    }
 }
 
 void Screen1ViewBase::moveOptionOneEndedCallbackHandler(const touchgfx::MoveAnimator<opcija1>& comp)

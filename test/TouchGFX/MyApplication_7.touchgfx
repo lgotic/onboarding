@@ -249,23 +249,304 @@
               "Duration": 50,
               "ActionComponent": "opcija61"
             }
+          },
+          {
+            "InteractionName": "changeToSlika1",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 10
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "slika1"
+            }
+          },
+          {
+            "InteractionName": "changeToSlika2",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 11
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "slika2"
+            }
+          },
+          {
+            "InteractionName": "changeToSlika3",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 12
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "slika3"
+            }
+          },
+          {
+            "InteractionName": "changeToSlika4",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 13
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "slika4"
+            }
+          },
+          {
+            "InteractionName": "changeToSlika5",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 14
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "slika5"
+            }
+          },
+          {
+            "InteractionName": "changeToSlika6",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 15
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "slika6"
+            }
           }
         ]
       },
       {
-        "Name": "Screen2",
+        "Name": "slika1",
         "Components": [
           {
-            "Type": "Image",
-            "Name": "image1",
-            "X": -72,
-            "Y": -16,
-            "Width": 480,
-            "Height": 272,
-            "RelativeFilename": "background_Screen2.png"
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 320,
+            "Height": 240,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
+            "Type": "Box",
+            "Name": "box2",
+            "Width": 50,
+            "Height": 50
           }
         ],
-        "Interactions": []
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 16
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen1"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "slika2",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 320,
+            "Height": 240,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
+            "Type": "Box",
+            "Name": "box2",
+            "X": 270,
+            "Width": 50,
+            "Height": 50
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 16
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen1"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "slika3",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 320,
+            "Height": 240,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
+            "Type": "Box",
+            "Name": "box2",
+            "X": 270,
+            "Y": 190,
+            "Width": 50,
+            "Height": 50
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 16
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen1"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "slika4",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 320,
+            "Height": 240,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
+            "Type": "Box",
+            "Name": "box2",
+            "Y": 190,
+            "Width": 50,
+            "Height": 50
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 16
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen1"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "slika5",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 320,
+            "Height": 240,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
+            "Type": "Box",
+            "Name": "box2",
+            "X": 135,
+            "Y": 95,
+            "Width": 50,
+            "Height": 50
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 16
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen1"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "slika6",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 320,
+            "Height": 240,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
+            "Type": "Box",
+            "Name": "box2",
+            "X": 88,
+            "Y": 95,
+            "Width": 138,
+            "Height": 50
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 16
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen1"
+            }
+          }
+        ]
       }
     ],
     "CustomContainerDefinitions": [

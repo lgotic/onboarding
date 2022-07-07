@@ -1,17 +1,17 @@
-#ifndef SCREEN2PRESENTER_HPP
-#define SCREEN2PRESENTER_HPP
+#ifndef SLIKA2PRESENTER_HPP
+#define SLIKA2PRESENTER_HPP
 
 #include <gui/model/ModelListener.hpp>
 #include <mvp/Presenter.hpp>
 
 using namespace touchgfx;
 
-class Screen2View;
+class slika2View;
 
-class Screen2Presenter : public touchgfx::Presenter, public ModelListener
+class slika2Presenter : public touchgfx::Presenter, public ModelListener
 {
 public:
-    Screen2Presenter(Screen2View& v);
+    slika2Presenter(slika2View& v);
 
     /**
      * The activate function is called automatically when this screen is "switched in"
@@ -25,12 +25,12 @@ public:
      */
     virtual void deactivate();
 
-    virtual ~Screen2Presenter() {};
+    virtual ~slika2Presenter() {};
 
 private:
-    Screen2Presenter();
+    slika2Presenter();
 
-    Screen2View& view;
+    slika2View& view;
 };
 
-#endif // SCREEN2PRESENTER_HPP
+#endif // SLIKA2PRESENTER_HPP

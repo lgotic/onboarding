@@ -23,6 +23,24 @@ public:
     // Screen1
     void gotoScreen1ScreenNoTransition();
 
+    // slika1
+    void gotoslika1ScreenNoTransition();
+
+    // slika2
+    void gotoslika2ScreenNoTransition();
+
+    // slika3
+    void gotoslika3ScreenNoTransition();
+
+    // slika4
+    void gotoslika4ScreenNoTransition();
+
+    // slika5
+    void gotoslika5ScreenNoTransition();
+
+    // slika6
+    void gotoslika6ScreenNoTransition();
+
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
@@ -30,6 +48,24 @@ protected:
 
     // Screen1
     void gotoScreen1ScreenNoTransitionImpl();
+
+    // slika1
+    void gotoslika1ScreenNoTransitionImpl();
+
+    // slika2
+    void gotoslika2ScreenNoTransitionImpl();
+
+    // slika3
+    void gotoslika3ScreenNoTransitionImpl();
+
+    // slika4
+    void gotoslika4ScreenNoTransitionImpl();
+
+    // slika5
+    void gotoslika5ScreenNoTransitionImpl();
+
+    // slika6
+    void gotoslika6ScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP

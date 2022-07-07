@@ -26,9 +26,6 @@
     <ClCompile Include="..\..\gui\src\screen1_screen\Screen1View.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp"/>
     <ClCompile Include="..\..\generated\simulator\src\video\SoftwareMJPEGDecoder.cpp"/>
-    <ClCompile Include="..\..\gui\src\screen2_screen\Screen2Presenter.cpp"/>
-    <ClCompile Include="..\..\gui\src\screen2_screen\Screen2View.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\screen2_screen\Screen2ViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\opcija2.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\opcija2Base.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\opcija3.cpp"/>
@@ -39,6 +36,24 @@
     <ClCompile Include="..\..\generated\gui_generated\src\containers\opcija5Base.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\opcija6.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\opcija6Base.cpp"/>
+    <ClCompile Include="..\..\gui\src\slika1_screen\slika1Presenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\slika1_screen\slika1View.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\slika1_screen\slika1ViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\slika2_screen\slika2Presenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\slika2_screen\slika2View.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\slika2_screen\slika2ViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\slika3_screen\slika3Presenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\slika3_screen\slika3View.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\slika3_screen\slika3ViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\slika4_screen\slika4Presenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\slika4_screen\slika4View.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\slika4_screen\slika4ViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\slika5_screen\slika5Presenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\slika5_screen\slika5View.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\slika5_screen\slika5ViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\slika6_screen\slika6Presenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\slika6_screen\slika6View.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\slika6_screen\slika6ViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -194,9 +209,6 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen1_screen\Screen1ViewBase.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp"/>
     <ClInclude Include="..\..\generated\simulator\include\simulator\video\SoftwareMJPEGDecoder.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\screen2_screen\Screen2Presenter.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\screen2_screen\Screen2View.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen2_screen\Screen2ViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\opcija2.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\opcija2Base.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\opcija3.hpp"/>
@@ -207,6 +219,24 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\opcija5Base.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\opcija6.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\opcija6Base.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\slika1_screen\slika1Presenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\slika1_screen\slika1View.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\slika1_screen\slika1ViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\slika2_screen\slika2Presenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\slika2_screen\slika2View.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\slika2_screen\slika2ViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\slika3_screen\slika3Presenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\slika3_screen\slika3View.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\slika3_screen\slika3ViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\slika4_screen\slika4Presenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\slika4_screen\slika4View.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\slika4_screen\slika4ViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\slika5_screen\slika5Presenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\slika5_screen\slika5View.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\slika5_screen\slika5ViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\slika6_screen\slika6Presenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\slika6_screen\slika6View.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\slika6_screen\slika6ViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

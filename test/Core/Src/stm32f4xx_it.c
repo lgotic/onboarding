@@ -27,7 +27,8 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
-
+extern uint8_t selectButtonState;
+extern uint8_t changeMeniItem;
 /* USER CODE END TD */
 
 /* Private define ------------------------------------------------------------*/
@@ -175,6 +176,48 @@ void EXTI0_IRQHandler(void)
 }
 
 /**
+  * @brief This function handles EXTI line3 interrupt.
+  */
+void EXTI3_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI3_IRQn 0 */
+
+  /* USER CODE END EXTI3_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(DT_Pin);
+  /* USER CODE BEGIN EXTI3_IRQn 1 */
+
+  /* USER CODE END EXTI3_IRQn 1 */
+}
+
+/**
+  * @brief This function handles EXTI line4 interrupt.
+  */
+void EXTI4_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI4_IRQn 0 */
+
+  /* USER CODE END EXTI4_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(KnobPress_Pin);
+  /* USER CODE BEGIN EXTI4_IRQn 1 */
+
+  /* USER CODE END EXTI4_IRQn 1 */
+}
+
+/**
+  * @brief This function handles EXTI line[9:5] interrupts.
+  */
+void EXTI9_5_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI9_5_IRQn 0 */
+
+  /* USER CODE END EXTI9_5_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(CLK_Pin);
+  /* USER CODE BEGIN EXTI9_5_IRQn 1 */
+
+  /* USER CODE END EXTI9_5_IRQn 1 */
+}
+
+/**
   * @brief This function handles TIM6 global interrupt, DAC1 and DAC2 underrun error interrupts.
   */
 void TIM6_DAC_IRQHandler(void)
@@ -217,5 +260,22 @@ void DMA2D_IRQHandler(void)
 }
 
 /* USER CODE BEGIN 1 */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+	if ( GPIO_Pin == KnobPress_Pin) {
+		selectButtonState = 0x01;
+	}
+	if ( GPIO_Pin == CLK_Pin) {
+		if (HAL_GPIO_ReadPin(GPIOB, DT_Pin) == 0) {
+			changeMeniItem = 0x01;
 
+		}
+	}
+	else if ( GPIO_Pin == DT_Pin) {
+		if (HAL_GPIO_ReadPin(GPIOA, CLK_Pin) == 0) {
+			changeMeniItem = 0x02;
+
+		}
+
+	}
+}
 /* USER CODE END 1 */

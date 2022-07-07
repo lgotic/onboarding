@@ -196,17 +196,77 @@
     <Filter Include="Header Files\generated\simulator\include\simulator\video">
       <UniqueIdentifier>68BE6DE7-1D70-9C73-714D-542428007D85</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\gui\screen2_screen">
-      <UniqueIdentifier>176A7564-C111-3F6C-CF8F-699CB4C20A92</UniqueIdentifier>
+    <Filter Include="Header Files\gui\slika1_screen">
+      <UniqueIdentifier>BBDB5E58-6D18-08B6-98B3-E840CB20438C</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\gui\screen2_screen">
-      <UniqueIdentifier>2C87E2BC-E2E9-B5E8-B7FE-4A6412E1D503</UniqueIdentifier>
+    <Filter Include="Source Files\gui\slika1_screen">
+      <UniqueIdentifier>42899759-7B4F-D30D-A488-51016B76CD1E</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\generated\gui_generated\screen2_screen">
-      <UniqueIdentifier>1D461DDC-E09A-9110-BB61-28560BF676A9</UniqueIdentifier>
+    <Filter Include="Source Files\gui\slika2_screen">
+      <UniqueIdentifier>EEC93F03-FD3B-D5D7-5FE7-729BD32EB90F</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\generated\gui_generated\screen2_screen">
-      <UniqueIdentifier>4C04D2A1-C750-09F6-071C-44C4BAD79FF7</UniqueIdentifier>
+    <Filter Include="Header Files\gui\slika2_screen">
+      <UniqueIdentifier>3678EB7D-E5A9-EF0C-91A1-53B859FC7E16</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\slika6_screen">
+      <UniqueIdentifier>3E59B93C-1824-7E1E-7BF8-9F3858DB34AB</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\slika3_screen">
+      <UniqueIdentifier>AC26E7A8-2FDA-D8FC-65E4-7E7378E0FE54</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\slika3_screen">
+      <UniqueIdentifier>038764A4-F392-84C4-7C8B-B96639BBA27A</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\slika6_screen">
+      <UniqueIdentifier>6D485842-EC3E-62F3-811A-69F74A3D8A38</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\slika4_screen">
+      <UniqueIdentifier>1534491D-C05D-5CFC-164E-65E9C8ADF9E0</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\slika4_screen">
+      <UniqueIdentifier>60B8753D-9CFD-9A05-AB5F-877151C278DE</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\slika5_screen">
+      <UniqueIdentifier>DE654D17-2A55-2CBE-6337-3702CC5A1AA7</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\slika5_screen">
+      <UniqueIdentifier>408DF512-9E11-2497-D342-F807BDA382DC</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\slika4_screen">
+      <UniqueIdentifier>D4FE5B5F-2DB9-C47A-8A9A-7C4BE46DF07A</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\slika4_screen">
+      <UniqueIdentifier>0BF2132D-8CFC-E542-BDA2-721E6803D331</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\slika3_screen">
+      <UniqueIdentifier>FC6AC38E-4EC2-8633-CEAA-ADD4FFE431FD</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\slika3_screen">
+      <UniqueIdentifier>DD9628C9-36F7-999A-D4FD-FAAD11C43F55</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\slika2_screen">
+      <UniqueIdentifier>F220BCE8-A18E-B838-A2AE-D1EB5D1A92A5</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\slika5_screen">
+      <UniqueIdentifier>AC67CD2A-B3E6-3F53-3E0A-8553E4229C1A</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\slika2_screen">
+      <UniqueIdentifier>1C7B4C6A-218F-FBA4-A1C9-6C19DA7C21B2</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\slika1_screen">
+      <UniqueIdentifier>656775B7-62ED-544B-663A-E7201E98EABE</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\slika1_screen">
+      <UniqueIdentifier>14DE91DB-32D4-3434-2A5E-63BAEA427678</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\slika5_screen">
+      <UniqueIdentifier>7A0B8A68-ADD9-7699-A3D9-EA908864F54D</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\slika6_screen">
+      <UniqueIdentifier>81E683DB-1EB5-C52B-A190-F98A334E933D</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\slika6_screen">
+      <UniqueIdentifier>C5EE9C6E-1DF2-D76B-CBB9-0B398359DA84</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -255,15 +315,6 @@
     <ClCompile Include="..\..\generated\simulator\src\video\SoftwareMJPEGDecoder.cpp">
       <Filter>Source Files\generated\simulator\video</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\screen2_screen\Screen2Presenter.cpp">
-      <Filter>Source Files\gui\screen2_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\screen2_screen\Screen2View.cpp">
-      <Filter>Source Files\gui\screen2_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\screen2_screen\Screen2ViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\screen2_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\containers\opcija2.cpp">
       <Filter>Source Files\gui\containers</Filter>
     </ClCompile>
@@ -293,6 +344,60 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\opcija6Base.cpp">
       <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\slika1_screen\slika1Presenter.cpp">
+      <Filter>Source Files\gui\slika1_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\slika1_screen\slika1View.cpp">
+      <Filter>Source Files\gui\slika1_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\slika1_screen\slika1ViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\slika1_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\slika2_screen\slika2Presenter.cpp">
+      <Filter>Source Files\gui\slika2_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\slika2_screen\slika2View.cpp">
+      <Filter>Source Files\gui\slika2_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\slika2_screen\slika2ViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\slika2_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\slika3_screen\slika3Presenter.cpp">
+      <Filter>Source Files\gui\slika3_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\slika3_screen\slika3View.cpp">
+      <Filter>Source Files\gui\slika3_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\slika3_screen\slika3ViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\slika3_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\slika4_screen\slika4Presenter.cpp">
+      <Filter>Source Files\gui\slika4_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\slika4_screen\slika4View.cpp">
+      <Filter>Source Files\gui\slika4_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\slika4_screen\slika4ViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\slika4_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\slika5_screen\slika5Presenter.cpp">
+      <Filter>Source Files\gui\slika5_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\slika5_screen\slika5View.cpp">
+      <Filter>Source Files\gui\slika5_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\slika5_screen\slika5ViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\slika5_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\slika6_screen\slika6Presenter.cpp">
+      <Filter>Source Files\gui\slika6_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\slika6_screen\slika6View.cpp">
+      <Filter>Source Files\gui\slika6_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\slika6_screen\slika6ViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\slika6_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -751,15 +856,6 @@
     <ClInclude Include="..\..\generated\simulator\include\simulator\video\SoftwareMJPEGDecoder.hpp">
       <Filter>Header Files\generated\simulator\include\simulator\video</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\screen2_screen\Screen2Presenter.hpp">
-      <Filter>Header Files\gui\screen2_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\screen2_screen\Screen2View.hpp">
-      <Filter>Header Files\gui\screen2_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen2_screen\Screen2ViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\screen2_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\containers\opcija2.hpp">
       <Filter>Header Files\gui\containers</Filter>
     </ClInclude>
@@ -789,6 +885,60 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\opcija6Base.hpp">
       <Filter>Header Files\generated\gui_generated\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\slika1_screen\slika1Presenter.hpp">
+      <Filter>Header Files\gui\slika1_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\slika1_screen\slika1View.hpp">
+      <Filter>Header Files\gui\slika1_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\slika1_screen\slika1ViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\slika1_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\slika2_screen\slika2Presenter.hpp">
+      <Filter>Header Files\gui\slika2_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\slika2_screen\slika2View.hpp">
+      <Filter>Header Files\gui\slika2_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\slika2_screen\slika2ViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\slika2_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\slika3_screen\slika3Presenter.hpp">
+      <Filter>Header Files\gui\slika3_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\slika3_screen\slika3View.hpp">
+      <Filter>Header Files\gui\slika3_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\slika3_screen\slika3ViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\slika3_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\slika4_screen\slika4Presenter.hpp">
+      <Filter>Header Files\gui\slika4_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\slika4_screen\slika4View.hpp">
+      <Filter>Header Files\gui\slika4_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\slika4_screen\slika4ViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\slika4_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\slika5_screen\slika5Presenter.hpp">
+      <Filter>Header Files\gui\slika5_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\slika5_screen\slika5View.hpp">
+      <Filter>Header Files\gui\slika5_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\slika5_screen\slika5ViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\slika5_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\slika6_screen\slika6Presenter.hpp">
+      <Filter>Header Files\gui\slika6_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\slika6_screen\slika6View.hpp">
+      <Filter>Header Files\gui\slika6_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\slika6_screen\slika6ViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\slika6_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

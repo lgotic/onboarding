@@ -340,14 +340,64 @@
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/screen1_screen/Screen1View.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/gui/Screen2Presenter.cpp</name>
+			<name>Application/User/gui/slika1Presenter.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/screen2_screen/Screen2Presenter.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/slika1_screen/slika1Presenter.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/gui/Screen2View.cpp</name>
+			<name>Application/User/gui/slika1View.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/screen2_screen/Screen2View.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/slika1_screen/slika1View.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/slika2Presenter.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/slika2_screen/slika2Presenter.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/slika2View.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/slika2_screen/slika2View.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/slika3Presenter.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/slika3_screen/slika3Presenter.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/slika3View.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/slika3_screen/slika3View.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/slika4Presenter.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/slika4_screen/slika4Presenter.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/slika4View.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/slika4_screen/slika4View.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/slika5Presenter.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/slika5_screen/slika5Presenter.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/slika5View.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/slika5_screen/slika5View.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/slika6Presenter.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/slika6_screen/slika6Presenter.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/slika6View.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/slika6_screen/slika6View.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/ApplicationFontProvider.cpp</name>
@@ -460,9 +510,34 @@
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/screen1_screen/Screen1ViewBase.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/Screen2ViewBase.cpp</name>
+			<name>Application/User/generated/slika1ViewBase.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/screen2_screen/Screen2ViewBase.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/slika1_screen/slika1ViewBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/slika2ViewBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/slika2_screen/slika2ViewBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/slika3ViewBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/slika3_screen/slika3ViewBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/slika4ViewBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/slika4_screen/slika4ViewBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/slika5ViewBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/slika5_screen/slika5ViewBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/slika6ViewBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/slika6_screen/slika6ViewBase.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/BitmapDatabase.cpp</name>

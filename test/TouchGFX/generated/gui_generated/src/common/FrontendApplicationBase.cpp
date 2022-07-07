@@ -11,8 +11,18 @@
 #include <platform/driver/lcd/LCD16bpp.hpp>
 #include <gui/screen1_screen/Screen1View.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
-#include <gui/screen2_screen/Screen2View.hpp>
-#include <gui/screen2_screen/Screen2Presenter.hpp>
+#include <gui/slika1_screen/slika1View.hpp>
+#include <gui/slika1_screen/slika1Presenter.hpp>
+#include <gui/slika2_screen/slika2View.hpp>
+#include <gui/slika2_screen/slika2Presenter.hpp>
+#include <gui/slika3_screen/slika3View.hpp>
+#include <gui/slika3_screen/slika3Presenter.hpp>
+#include <gui/slika4_screen/slika4View.hpp>
+#include <gui/slika4_screen/slika4Presenter.hpp>
+#include <gui/slika5_screen/slika5View.hpp>
+#include <gui/slika5_screen/slika5Presenter.hpp>
+#include <gui/slika6_screen/slika6View.hpp>
+#include <gui/slika6_screen/slika6Presenter.hpp>
 
 using namespace touchgfx;
 
@@ -42,4 +52,82 @@ void FrontendApplicationBase::gotoScreen1ScreenNoTransition()
 void FrontendApplicationBase::gotoScreen1ScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<Screen1View, Screen1Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// slika1
+
+void FrontendApplicationBase::gotoslika1ScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoslika1ScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoslika1ScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<slika1View, slika1Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// slika2
+
+void FrontendApplicationBase::gotoslika2ScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoslika2ScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoslika2ScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<slika2View, slika2Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// slika3
+
+void FrontendApplicationBase::gotoslika3ScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoslika3ScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoslika3ScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<slika3View, slika3Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// slika4
+
+void FrontendApplicationBase::gotoslika4ScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoslika4ScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoslika4ScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<slika4View, slika4Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// slika5
+
+void FrontendApplicationBase::gotoslika5ScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoslika5ScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoslika5ScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<slika5View, slika5Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// slika6
+
+void FrontendApplicationBase::gotoslika6ScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoslika6ScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoslika6ScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<slika6View, slika6Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
