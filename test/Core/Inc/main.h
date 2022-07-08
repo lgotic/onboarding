@@ -58,12 +58,6 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define CLK_Pin GPIO_PIN_5
-#define CLK_GPIO_Port GPIOA
-#define CLK_EXTI_IRQn EXTI9_5_IRQn
-#define DT_Pin GPIO_PIN_3
-#define DT_GPIO_Port GPIOB
-#define DT_EXTI_IRQn EXTI3_IRQn
 #define KnobPress_Pin GPIO_PIN_4
 #define KnobPress_GPIO_Port GPIOB
 #define KnobPress_EXTI_IRQn EXTI4_IRQn
