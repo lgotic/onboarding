@@ -21,7 +21,7 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "app_touchgfx.h"
-
+#include "cJSON.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "Components/ili9341/ili9341.h"
@@ -55,10 +55,82 @@
 #define I2C3_TIMEOUT_MAX                    0x3000 /*<! The value of the maximal timeout for I2C waiting loops */
 #define SPI5_TIMEOUT_MAX                    0x1000
 /* USER CODE END PD */
-
+uint8_t izbor = 0;
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 
+char *create_monitor(void)
+{
+    const unsigned int resolution_numbers[3][2] = {
+        {1280, 720},
+        {1920, 1080},
+        {3840, 2160}
+    };
+    char *string = NULL;
+    cJSON *name = NULL;
+    cJSON *resolutions = NULL;
+    cJSON *resolution = NULL;
+    cJSON *width = NULL;
+    cJSON *height = NULL;
+    size_t index = 0;
+
+    cJSON *monitor = cJSON_CreateObject();
+    if (monitor == NULL)
+    {
+    	izbor = 1;
+        goto end;
+    }
+
+    name = cJSON_CreateString("Awesome 4K");
+    if (name == NULL)
+    {
+        goto end;
+    }
+    /* after creation was successful, immediately add it to the monitor,
+     * thereby transferring ownership of the pointer to it */
+    cJSON_AddItemToObject(monitor, "name", name);
+
+    resolutions = cJSON_CreateArray();
+    if (resolutions == NULL)
+    {
+        goto end;
+    }
+    cJSON_AddItemToObject(monitor, "resolutions", resolutions);
+
+    for (index = 0; index < (sizeof(resolution_numbers) / (2 * sizeof(int))); ++index)
+    {
+        resolution = cJSON_CreateObject();
+        if (resolution == NULL)
+        {
+            goto end;
+        }
+        cJSON_AddItemToArray(resolutions, resolution);
+
+        width = cJSON_CreateNumber(resolution_numbers[index][0]);
+        if (width == NULL)
+        {
+            goto end;
+        }
+        cJSON_AddItemToObject(resolution, "width", width);
+
+        height = cJSON_CreateNumber(resolution_numbers[index][1]);
+        if (height == NULL)
+        {
+            goto end;
+        }
+        cJSON_AddItemToObject(resolution, "height", height);
+    }
+
+    string = cJSON_Print(monitor);
+    if (string == NULL)
+    {
+       // fprintf(stderr, "Failed to print monitor.\n");
+    }
+
+end:
+    cJSON_Delete(monitor);
+    return string;
+}
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -88,7 +160,7 @@ osThreadId_t Button_TaskHandle;
 const osThreadAttr_t Button_Task_attributs = {
 		.name = "Button_Task",
 		.priority = (osPriority_t) osPriorityHigh,
-		.stack_size = 256 * 4
+		.stack_size = 1024 * 4
 };
 /* USER CODE END PV */
 
@@ -146,6 +218,8 @@ uint32_t Spi5Timeout = SPI5_TIMEOUT_MAX; /*<! Value of Timeout when SPI communic
 
 uint8_t meniScroller = 0;
 uint8_t meniSelect = 0;
+
+uint8_t *stringArray;
 /* USER CODE END 0 */
 
 /**
@@ -187,7 +261,7 @@ int main(void)
   /* Call PreOsInit function */
   MX_TouchGFX_PreOSInit();
   /* USER CODE BEGIN 2 */
-
+  stringArray = create_monitor();
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -979,11 +1053,13 @@ void LCD_Delay(uint32_t Delay)
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN Header_TouchGFX_Task */
-uint8_t izbor = 0;
+
+uint8_t jsonString [300] = {0};
+
 void Button_Task(void *argument)
 {
 
-
+ *jsonString = create_monitor();
   for(;;)
   {
 
