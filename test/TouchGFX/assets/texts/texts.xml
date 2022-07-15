@@ -6,6 +6,24 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_Y6B2" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">New Text</Translation>
+      </Text>
+      <Text Id="__SingleUse_3LHD" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">000</Translation>
+      </Text>
+      <Text Id="__SingleUse_2MDP" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">000</Translation>
+      </Text>
+      <Text Id="__SingleUse_29FL" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Humidity &lt;d&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_5WBR" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Temperature: &lt;d&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_ROVU" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">airFryer status: &lt;s&gt;</Translation>
+      </Text>
       <Text Id="__SingleUse_22TH" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">New Text</Translation>
       </Text>
@@ -39,7 +57,7 @@
     </TextGroup>
   </Texts>
   <Typographies>
-    <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="pause" WildcardCharacterRanges="0-9" />
     <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" Direction="LTR" FallbackCharacter="?" />
   </Typographies>

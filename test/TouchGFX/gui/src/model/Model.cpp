@@ -24,7 +24,10 @@ void Model::tick()
 		meniSelect = 0;
 		modelListener->changeScreen(meniScroller);
 	}
+	modelListener->updateValues();
 }
+
+
 
 void Model::saveCurrentScreen(uint8_t cScreen) {
 	activeScreen = cScreen;

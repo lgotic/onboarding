@@ -22,3 +22,7 @@ void Screen2Presenter::changeScreen(uint8_t selectedScreen) {
 	application().gotoScreen1ScreenNoTransition();
 }
 
+void Screen2Presenter::updateValues() {
+	view.screenUpdate();
+}
+

@@ -27,7 +27,7 @@ public:
 
     virtual ~Screen2Presenter() {};
     void changeScreen(uint8_t selectedScreen);
-
+    void updateValues(void);
 private:
     FrontendApplication& application() {
                return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());

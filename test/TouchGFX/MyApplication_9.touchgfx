@@ -307,10 +307,49 @@
             }
           },
           {
-            "Type": "Box",
-            "Name": "box2",
-            "Width": 50,
-            "Height": 50
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "Y": 64,
+            "Width": 255,
+            "Height": 24,
+            "TextId": "__SingleUse_ROVU",
+            "TextRotation": "0",
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_Y6B2",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textAreaTemperature",
+            "Y": 97,
+            "Width": 181,
+            "Height": 24,
+            "TextId": "__SingleUse_5WBR",
+            "TextRotation": "0",
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_2MDP",
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textAreaHumidity",
+            "Y": 136,
+            "Width": 135,
+            "Height": 24,
+            "TextId": "__SingleUse_29FL",
+            "TextRotation": "0",
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_3LHD",
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
           }
         ],
         "Interactions": []

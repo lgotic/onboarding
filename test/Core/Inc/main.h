@@ -52,7 +52,7 @@ extern "C" {
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
-
+void* myRealloc(void* src, uint32_t size);
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */

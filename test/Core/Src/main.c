@@ -21,10 +21,11 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "app_touchgfx.h"
-#include "cJSON.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "Components/ili9341/ili9341.h"
+#include "cJSON.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -36,6 +37,9 @@
 /* USER CODE BEGIN PD */
 #define REFRESH_COUNT           ((uint32_t)1386)   /* SDRAM refresh counter */
 #define SDRAM_TIMEOUT           ((uint32_t)0xFFFF)
+
+#define TRUE 	1u
+#define FALSE 	0u
 
 /**
   * @brief  FMC SDRAM Mode definition register defines
@@ -55,9 +59,25 @@
 #define I2C3_TIMEOUT_MAX                    0x3000 /*<! The value of the maximal timeout for I2C waiting loops */
 #define SPI5_TIMEOUT_MAX                    0x1000
 /* USER CODE END PD */
-uint8_t izbor = 0;
+
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
+
+void* myRealloc(void* src, uint32_t size)
+{
+    if (NULL == src)
+    {
+        return NULL;
+    }
+    uint8_t* new = pvPortMalloc(size);
+    if (NULL != new)
+    {
+        memcpy(new, src, size);
+        vPortFree(src);
+        return (void*)new;
+    }
+    return NULL;
+}
 
 char *create_monitor(void)
 {
@@ -77,7 +97,7 @@ char *create_monitor(void)
     cJSON *monitor = cJSON_CreateObject();
     if (monitor == NULL)
     {
-    	izbor = 1;
+
         goto end;
     }
 
@@ -131,6 +151,12 @@ end:
     cJSON_Delete(monitor);
     return string;
 }
+
+
+
+/* return 1 if the monitor supports full hd, 0 otherwise */
+
+
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -146,6 +172,10 @@ SPI_HandleTypeDef hspi5;
 
 TIM_HandleTypeDef htim2;
 
+UART_HandleTypeDef huart5;
+DMA_HandleTypeDef hdma_uart5_rx;
+DMA_HandleTypeDef hdma_uart5_tx;
+
 SDRAM_HandleTypeDef hsdram1;
 
 /* Definitions for GUI_Task */
@@ -160,13 +190,14 @@ osThreadId_t Button_TaskHandle;
 const osThreadAttr_t Button_Task_attributs = {
 		.name = "Button_Task",
 		.priority = (osPriority_t) osPriorityHigh,
-		.stack_size = 1024 * 4
+		.stack_size = 1024 *4
 };
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_CRC_Init(void);
 static void MX_I2C3_Init(void);
 static void MX_SPI5_Init(void);
@@ -174,6 +205,7 @@ static void MX_FMC_Init(void);
 static void MX_LTDC_Init(void);
 static void MX_DMA2D_Init(void);
 static void MX_TIM2_Init(void);
+static void MX_UART5_Init(void);
 void TouchGFX_Task(void *argument);
 
 /* USER CODE BEGIN PFP */
@@ -220,6 +252,53 @@ uint8_t meniScroller = 0;
 uint8_t meniSelect = 0;
 
 uint8_t *stringArray;
+
+
+uint8_t jsonRecived = FALSE;
+
+// buffer for DMA UART receive and buffer counter
+uint8_t dmaStringIn[500] = {0};
+uint16_t dmaStringCounter = 0;
+
+uint8_t airFryerStatus[20] = {0};
+uint8_t airFryerTemperature = 0;
+uint8_t airFryerHumidity = 0;
+
+uint8_t tx_buff[] = {0,1,2,3,4,5,6,7,8,9};
+uint8_t rx_buff[2];
+
+
+int supports_full_hd(const char * const monitor)
+{
+    const cJSON *afHum = NULL;
+    const cJSON *afTemp = NULL;
+    const cJSON *afStatus = NULL;
+    cJSON *monitor_json = cJSON_Parse(monitor);
+    if (monitor_json == NULL)
+    {
+        const char *error_ptr = cJSON_GetErrorPtr();
+        if (error_ptr != NULL)
+        {
+         //   fprintf(stderr, "Error before: %s\n", error_ptr);
+        }
+
+    }
+
+    afStatus = cJSON_GetObjectItemCaseSensitive(monitor_json, "status");
+    if (cJSON_IsString(afStatus) && (afStatus->valuestring != NULL))
+    {
+    	memcpy(airFryerStatus,afStatus->valuestring,strlen(afStatus->valuestring));
+    }
+    afHum = cJSON_GetObjectItemCaseSensitive(monitor_json, "humidity");
+    airFryerHumidity = afHum->valueint;
+
+    afTemp = cJSON_GetObjectItemCaseSensitive(monitor_json, "temp");
+    airFryerTemperature = afTemp->valueint;
+
+    cJSON_Delete(monitor_json);
+    return 1;
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -250,6 +329,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_CRC_Init();
   MX_I2C3_Init();
   MX_SPI5_Init();
@@ -257,11 +337,16 @@ int main(void)
   MX_LTDC_Init();
   MX_DMA2D_Init();
   MX_TIM2_Init();
+  MX_UART5_Init();
   MX_TouchGFX_Init();
   /* Call PreOsInit function */
   MX_TouchGFX_PreOSInit();
   /* USER CODE BEGIN 2 */
   stringArray = create_monitor();
+
+  HAL_UART_Receive_DMA(&huart5,rx_buff,1);
+  HAL_UART_Transmit_DMA(&huart5,stringArray,strlen(stringArray));
+
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -278,7 +363,7 @@ int main(void)
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
   /* USER CODE END RTOS_TIMERS */
-  Button_TaskHandle = osThreadNew(Button_Task, NULL, &Button_Task_attributs);
+
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
@@ -293,7 +378,7 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_EVENTS */
   /* add events, ... */
-
+  Button_TaskHandle = osThreadNew(Button_Task, NULL, &Button_Task_attributs);
   HAL_TIM_Encoder_Start(&htim2, TIM_CHANNEL_ALL);
   /* USER CODE END RTOS_EVENTS */
 
@@ -624,6 +709,58 @@ static void MX_TIM2_Init(void)
 
 }
 
+/**
+  * @brief UART5 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_UART5_Init(void)
+{
+
+  /* USER CODE BEGIN UART5_Init 0 */
+
+  /* USER CODE END UART5_Init 0 */
+
+  /* USER CODE BEGIN UART5_Init 1 */
+
+  /* USER CODE END UART5_Init 1 */
+  huart5.Instance = UART5;
+  huart5.Init.BaudRate = 9600;
+  huart5.Init.WordLength = UART_WORDLENGTH_8B;
+  huart5.Init.StopBits = UART_STOPBITS_1;
+  huart5.Init.Parity = UART_PARITY_NONE;
+  huart5.Init.Mode = UART_MODE_TX_RX;
+  huart5.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart5.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart5) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN UART5_Init 2 */
+
+  /* USER CODE END UART5_Init 2 */
+
+}
+
+/**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Stream0_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream0_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream0_IRQn);
+  /* DMA1_Stream7_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream7_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream7_IRQn);
+
+}
+
 /* FMC initialization function */
 static void MX_FMC_Init(void)
 {
@@ -727,6 +864,37 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
+
+	static uint8_t isJSON = FALSE;
+	static uint8_t jsonOpenCounter = 0;
+	static uint8_t jsonCloseCounter = 0;
+	if (huart == &huart5) {
+		dmaStringIn[dmaStringCounter] = rx_buff[0];
+		if (dmaStringIn[dmaStringCounter] == '"' && dmaStringIn[dmaStringCounter-1] == '{' && isJSON == FALSE) {
+			isJSON = TRUE;
+			jsonOpenCounter++;
+		}
+		else if ( isJSON == TRUE && rx_buff[0] == '{') {
+			jsonOpenCounter++;
+		}
+		else if ( isJSON == TRUE && rx_buff[0] == '}') {
+			jsonCloseCounter++;
+		}
+		if (isJSON == TRUE && jsonOpenCounter == jsonCloseCounter) {
+			jsonRecived = TRUE;
+			isJSON = FALSE;
+		}
+		dmaStringCounter++;
+		if (dmaStringCounter >=500) {
+			dmaStringCounter = 0;
+
+		}
+	}
+	HAL_UART_Receive_DMA(&huart5,rx_buff,1);
+}
+
 /**
   * @brief  Perform the SDRAM external memory initialization sequence
   * @param  hsdram: SDRAM handle
@@ -1054,14 +1222,23 @@ void LCD_Delay(uint32_t Delay)
 
 /* USER CODE BEGIN Header_TouchGFX_Task */
 
-uint8_t jsonString [300] = {0};
+uint8_t *jsonString;
 
 void Button_Task(void *argument)
 {
 
- *jsonString = create_monitor();
+	jsonString = create_monitor();
+	//supports_full_hd(jsonString);
+ //*jsonString = create_monitor();
   for(;;)
   {
+	  if (jsonRecived == TRUE) {
+		  jsonRecived = FALSE;
+		  strcpy(jsonString,dmaStringIn);
+		  dmaStringCounter = 0;
+		  memset(dmaStringIn,'\0',strlen(dmaStringIn));
+		  supports_full_hd(jsonString);
+	  }
 
 	  meniScroller = __HAL_TIM_GET_COUNTER(&htim2);
 	    osDelay(1);

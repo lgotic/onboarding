@@ -21,6 +21,7 @@ public:
     virtual void selectMeni4(){}
     virtual void selectMeni5(){}
     virtual void changeScreen(uint8_t selectedScreen) {}
+    virtual void updateValues() {}
 protected:
     Model* model;
 };
