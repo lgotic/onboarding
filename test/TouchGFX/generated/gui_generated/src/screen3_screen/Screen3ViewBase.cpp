@@ -3,6 +3,7 @@
 /*********************************************************************************/
 #include <gui_generated/screen3_screen/Screen3ViewBase.hpp>
 #include <touchgfx/Color.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 Screen3ViewBase::Screen3ViewBase()
 {
@@ -11,14 +12,37 @@ Screen3ViewBase::Screen3ViewBase()
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
     box1.setPosition(0, 0, 240, 320);
-    box1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    box1.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
 
-    box2.setPosition(190, 0, 50, 50);
-    box2.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    nutrimaxStatus.setXY(0, 43);
+    nutrimaxStatus.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    nutrimaxStatus.setLinespacing(0);
+    Unicode::snprintf(nutrimaxStatusBuffer, NUTRIMAXSTATUS_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_YQ7R).getText());
+    nutrimaxStatus.setWildcard(nutrimaxStatusBuffer);
+    nutrimaxStatus.resizeToCurrentText();
+    nutrimaxStatus.setTypedText(touchgfx::TypedText(T___SINGLEUSE_P2C9));
+
+    nutrimaxTemp.setXY(0, 67);
+    nutrimaxTemp.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    nutrimaxTemp.setLinespacing(0);
+    Unicode::snprintf(nutrimaxTempBuffer, NUTRIMAXTEMP_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_8W77).getText());
+    nutrimaxTemp.setWildcard(nutrimaxTempBuffer);
+    nutrimaxTemp.resizeToCurrentText();
+    nutrimaxTemp.setTypedText(touchgfx::TypedText(T___SINGLEUSE_KVT1));
+
+    nutrimaxHum.setXY(0, 91);
+    nutrimaxHum.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    nutrimaxHum.setLinespacing(0);
+    Unicode::snprintf(nutrimaxHumBuffer, NUTRIMAXHUM_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_R1HY).getText());
+    nutrimaxHum.setWildcard(nutrimaxHumBuffer);
+    nutrimaxHum.resizeToCurrentText();
+    nutrimaxHum.setTypedText(touchgfx::TypedText(T___SINGLEUSE_TPZY));
 
     add(__background);
     add(box1);
-    add(box2);
+    add(nutrimaxStatus);
+    add(nutrimaxTemp);
+    add(nutrimaxHum);
 }
 
 void Screen3ViewBase::setupScreen()

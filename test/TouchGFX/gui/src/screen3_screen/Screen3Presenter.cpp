@@ -20,3 +20,7 @@ void Screen3Presenter::changeScreen(uint8_t selectedScreen) {
 	view.tearDownScreen();
 	application().gotoScreen1ScreenNoTransition();
 }
+
+void Screen3Presenter::updateNutrimaxValues(){
+	view.screenUpdate();
+}

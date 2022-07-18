@@ -27,6 +27,7 @@ public:
 
     virtual ~Screen3Presenter() {};
     void changeScreen(uint8_t selectedScreen);
+    void updateNutrimaxValues();
 private:
     FrontendApplication& application() {
                return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());

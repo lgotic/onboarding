@@ -22,6 +22,7 @@ public:
     virtual void selectMeni5(){}
     virtual void changeScreen(uint8_t selectedScreen) {}
     virtual void updateValues() {}
+    virtual void updateNutrimaxValues() {}
 protected:
     Model* model;
 };

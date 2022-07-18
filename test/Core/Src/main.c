@@ -264,11 +264,15 @@ uint8_t airFryerStatus[20] = {0};
 uint8_t airFryerTemperature = 0;
 uint8_t airFryerHumidity = 0;
 
-uint8_t tx_buff[] = {0,1,2,3,4,5,6,7,8,9};
+uint8_t airFryerNutrimaxStatus[20] = {0};
+uint8_t airFryerNutrimaxTemperature = 0;
+uint8_t airFryerNutrimaxHumidity = 0;
+
+uint8_t tx_buff[] = {0xfe,0xff,0x02,0x00,0x02,0x01,0x00,0x2e,0x3e,0x20};
 uint8_t rx_buff[2];
+uint8_t esp32ConnectionInit = FALSE ;
 
-
-int supports_full_hd(const char * const monitor)
+int parseJsonString(const char * const monitor)
 {
     const cJSON *afHum = NULL;
     const cJSON *afTemp = NULL;
@@ -290,10 +294,41 @@ int supports_full_hd(const char * const monitor)
     	memcpy(airFryerStatus,afStatus->valuestring,strlen(afStatus->valuestring));
     }
     afHum = cJSON_GetObjectItemCaseSensitive(monitor_json, "humidity");
-    airFryerHumidity = afHum->valueint;
+    if (cJSON_IsNumber(afHum)) airFryerHumidity = afHum->valueint;
 
     afTemp = cJSON_GetObjectItemCaseSensitive(monitor_json, "temp");
-    airFryerTemperature = afTemp->valueint;
+    if (cJSON_IsNumber(afTemp)) airFryerTemperature = afTemp->valueint;
+
+    cJSON_Delete(monitor_json);
+    return 1;
+}
+
+int parseNutrimaxJsonString(const char * const monitor)
+{
+    const cJSON *afHum = NULL;
+    const cJSON *afTemp = NULL;
+    const cJSON *afStatus = NULL;
+    cJSON *monitor_json = cJSON_Parse(monitor);
+    if (monitor_json == NULL)
+    {
+        const char *error_ptr = cJSON_GetErrorPtr();
+        if (error_ptr != NULL)
+        {
+         //   fprintf(stderr, "Error before: %s\n", error_ptr);
+        }
+
+    }
+
+    afStatus = cJSON_GetObjectItemCaseSensitive(monitor_json, "status");
+    if (cJSON_IsString(afStatus) && (afStatus->valuestring != NULL))
+    {
+    	memcpy(airFryerNutrimaxStatus,afStatus->valuestring,strlen(afStatus->valuestring));
+    }
+    afHum = cJSON_GetObjectItemCaseSensitive(monitor_json, "humidity");
+    airFryerNutrimaxHumidity = afHum->valueint;
+
+    afTemp = cJSON_GetObjectItemCaseSensitive(monitor_json, "temp");
+    airFryerNutrimaxTemperature = afTemp->valueint;
 
     cJSON_Delete(monitor_json);
     return 1;
@@ -345,7 +380,7 @@ int main(void)
   stringArray = create_monitor();
 
   HAL_UART_Receive_DMA(&huart5,rx_buff,1);
-  HAL_UART_Transmit_DMA(&huart5,stringArray,strlen(stringArray));
+ // HAL_UART_Transmit_DMA(&huart5,stringArray,strlen(stringArray));
 
   /* USER CODE END 2 */
 
@@ -725,7 +760,7 @@ static void MX_UART5_Init(void)
 
   /* USER CODE END UART5_Init 1 */
   huart5.Instance = UART5;
-  huart5.Init.BaudRate = 9600;
+  huart5.Init.BaudRate = 115200;
   huart5.Init.WordLength = UART_WORDLENGTH_8B;
   huart5.Init.StopBits = UART_STOPBITS_1;
   huart5.Init.Parity = UART_PARITY_NONE;
@@ -865,31 +900,54 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 
 	static uint8_t isJSON = FALSE;
 	static uint8_t jsonOpenCounter = 0;
 	static uint8_t jsonCloseCounter = 0;
 	if (huart == &huart5) {
-		dmaStringIn[dmaStringCounter] = rx_buff[0];
-		if (dmaStringIn[dmaStringCounter] == '"' && dmaStringIn[dmaStringCounter-1] == '{' && isJSON == FALSE) {
-			isJSON = TRUE;
-			jsonOpenCounter++;
+		if  (esp32ConnectionInit==FALSE) {
+			dmaStringIn[dmaStringCounter] = rx_buff[0];
+			dmaStringCounter++;
+			if (dmaStringCounter >=9) {
+				dmaStringCounter = 0;
+				if (dmaStringIn[0] == 0xFE &&
+					dmaStringIn[1] == 0xFF &&
+					dmaStringIn[2] == 0x01 &&
+					dmaStringIn[3] == 0x00 &&
+					dmaStringIn[4] == 0x02 &&
+					dmaStringIn[5] == 0x01 &&
+					dmaStringIn[6] == 0x00 &&
+					dmaStringIn[7] == 0x2E &&
+					dmaStringIn[8] == 0x3E
+				) {
+					esp32ConnectionInit = TRUE;
+				}
+			}
 		}
-		else if ( isJSON == TRUE && rx_buff[0] == '{') {
-			jsonOpenCounter++;
-		}
-		else if ( isJSON == TRUE && rx_buff[0] == '}') {
-			jsonCloseCounter++;
-		}
-		if (isJSON == TRUE && jsonOpenCounter == jsonCloseCounter) {
-			jsonRecived = TRUE;
-			isJSON = FALSE;
-		}
-		dmaStringCounter++;
-		if (dmaStringCounter >=500) {
-			dmaStringCounter = 0;
-
+		else {
+			if ( rx_buff[0] != 0x00) {
+			dmaStringIn[dmaStringCounter] = rx_buff[0];
+			if (dmaStringIn[dmaStringCounter] == '"' && dmaStringIn[dmaStringCounter-1] == '{' && isJSON == FALSE) {
+				isJSON = TRUE;
+				jsonOpenCounter++;
+			}
+			else if ( isJSON == TRUE && rx_buff[0] == '{') {
+				jsonOpenCounter++;
+			}
+			else if ( isJSON == TRUE && rx_buff[0] == '}') {
+				jsonCloseCounter++;
+			}
+			if (isJSON == TRUE && jsonOpenCounter == jsonCloseCounter) {
+				jsonRecived = TRUE;
+				isJSON = FALSE;
+			}
+			dmaStringCounter++;
+			if (dmaStringCounter >=500) {
+				dmaStringCounter = 0;
+			}
+			}
 		}
 	}
 	HAL_UART_Receive_DMA(&huart5,rx_buff,1);
@@ -1222,22 +1280,45 @@ void LCD_Delay(uint32_t Delay)
 
 /* USER CODE BEGIN Header_TouchGFX_Task */
 
-uint8_t *jsonString;
-
+char *jsonString;
+char *isNutrimax;
+int nutrimaxJsonStart = 0;
+int nutrimaxJsonStop = 0;
 void Button_Task(void *argument)
 {
 
+
 	jsonString = create_monitor();
-	//supports_full_hd(jsonString);
- //*jsonString = create_monitor();
   for(;;)
   {
+	  if (esp32ConnectionInit == TRUE) {
+		  esp32ConnectionInit = 2;
+		  HAL_UART_Transmit_DMA(&huart5,tx_buff,10);
+	  }
 	  if (jsonRecived == TRUE) {
 		  jsonRecived = FALSE;
 		  strcpy(jsonString,dmaStringIn);
-		  dmaStringCounter = 0;
+		  isNutrimax = strstr(jsonString,"nutri");
+
 		  memset(dmaStringIn,'\0',strlen(dmaStringIn));
-		  supports_full_hd(jsonString);
+		  if (isNutrimax) {
+			  do {
+				  nutrimaxJsonStart++;
+			  } while (jsonString[nutrimaxJsonStart] != 0x7b);
+
+			  do {
+				  nutrimaxJsonStop++;
+			  } while (jsonString[nutrimaxJsonStart + nutrimaxJsonStop] != 0x7d);
+			  memcpy(jsonString,&jsonString[nutrimaxJsonStart],nutrimaxJsonStop+1);
+			  memset(&jsonString[nutrimaxJsonStop+1],'\0',dmaStringCounter-(nutrimaxJsonStop+1));
+			  parseNutrimaxJsonString(jsonString);
+		  }
+		  else {
+			  parseJsonString(jsonString);
+		  }
+		  dmaStringCounter = 0;
+
+
 	  }
 
 	  meniScroller = __HAL_TIM_GET_COUNTER(&htim2);

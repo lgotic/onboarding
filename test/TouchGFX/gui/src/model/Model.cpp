@@ -25,6 +25,7 @@ void Model::tick()
 		modelListener->changeScreen(meniScroller);
 	}
 	modelListener->updateValues();
+	modelListener->updateNutrimaxValues();
 }
 
 
