@@ -32,8 +32,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
- 
-/* USER CODE END PD */
+ extern uint8_t getThrottling (uint8_t);
+/* USER CODE ED PD */
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
@@ -249,8 +249,10 @@ void DMA2D_IRQHandler(void)
 /* USER CODE BEGIN 1 */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	if ( GPIO_Pin == buttonPush_Pin) {
+		if ( getThrottling (0) ) {
 		if  (meniSelect == 0 ) meniSelect = 1;
 		else meniSelect = 0;
+		}
 	}
 }
 /* USER CODE END 1 */

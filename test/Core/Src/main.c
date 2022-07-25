@@ -192,6 +192,13 @@ const osThreadAttr_t Button_Task_attributs = {
 		.priority = (osPriority_t) osPriorityHigh,
 		.stack_size = 1024 *4
 };
+
+osThreadId_t ThrottleTimeKeeper_TaskHandle;
+const osThreadAttr_t ThrottleTimeKeeper_Task_attributs = {
+		.name = "TaskThrottleTimeKeeper",
+		.priority = (osPriority_t) osPriorityHigh,
+		.stack_size = 512
+};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -210,6 +217,7 @@ void TouchGFX_Task(void *argument);
 
 /* USER CODE BEGIN PFP */
 void Button_Task(void *argument);
+void ThrottleTimeKeeper_Task (void *argument);
 static void BSP_SDRAM_Initialization_Sequence(SDRAM_HandleTypeDef *hsdram, FMC_SDRAM_CommandTypeDef *Command);
 
 
@@ -334,6 +342,8 @@ int parseNutrimaxJsonString(const char * const monitor)
     return 1;
 }
 
+uint8_t getThrottling (uint8_t eventType);
+void timeForThrottling (uint32_t time);
 /* USER CODE END 0 */
 
 /**
@@ -414,6 +424,7 @@ int main(void)
   /* USER CODE BEGIN RTOS_EVENTS */
   /* add events, ... */
   Button_TaskHandle = osThreadNew(Button_Task, NULL, &Button_Task_attributs);
+  Button_TaskHandle = osThreadNew(ThrottleTimeKeeper_Task, NULL, &ThrottleTimeKeeper_Task_attributs);
   HAL_TIM_Encoder_Start(&htim2, TIM_CHANNEL_ALL);
   /* USER CODE END RTOS_EVENTS */
 
@@ -1284,10 +1295,11 @@ char *jsonString;
 char *isNutrimax;
 int nutrimaxJsonStart = 0;
 int nutrimaxJsonStop = 0;
+uint8_t shouldTrottle = 0 ;
 void Button_Task(void *argument)
 {
 
-
+	//__HAL_TIM_CLEAR_FLAG(&htim2,TIM_FLAG_UPDATE);
 	jsonString = create_monitor();
   for(;;)
   {
@@ -1321,10 +1333,41 @@ void Button_Task(void *argument)
 
 	  }
 
-	  meniScroller = __HAL_TIM_GET_COUNTER(&htim2);
+	if ( __HAL_TIM_GET_FLAG(&htim2,TIM_FLAG_CC1) &&  __HAL_TIM_GET_FLAG(&htim2,TIM_FLAG_CC2) && __HAL_TIM_IS_TIM_COUNTING_DOWN(&htim2)) {
+		HAL_UART_Transmit(&huart5, "dole\n\r", 7, 500);
+		__HAL_TIM_CLEAR_FLAG(&htim2,TIM_FLAG_CC1);
+		__HAL_TIM_CLEAR_FLAG(&htim2,TIM_FLAG_CC2);
+		//meniScroller = __HAL_TIM_GET_COUNTER(&htim2);
+		shouldTrottle = getThrottling (1);
+		if (shouldTrottle) {
+			meniScroller++;
+			if ( meniScroller == 5) meniScroller = 0;
+		}
+
+	}
+	if ( __HAL_TIM_GET_FLAG(&htim2,TIM_FLAG_CC1) &&  __HAL_TIM_GET_FLAG(&htim2,TIM_FLAG_CC2) && !__HAL_TIM_IS_TIM_COUNTING_DOWN(&htim2)) {
+			HAL_UART_Transmit(&huart5, "gore\n\r", 7, 500);
+			__HAL_TIM_CLEAR_FLAG(&htim2,TIM_FLAG_CC1);
+			__HAL_TIM_CLEAR_FLAG(&htim2,TIM_FLAG_CC2);
+			//meniScroller = __HAL_TIM_GET_COUNTER(&htim2);
+			shouldTrottle = getThrottling (2);
+			if (shouldTrottle) {
+				meniScroller--;
+				if ( meniScroller == 0xff) meniScroller = 4;
+			}
+		}
+
 	    osDelay(1);
   }
 
+}
+
+void ThrottleTimeKeeper_Task (void *argument) {
+
+	for (;;) {
+		timeForThrottling(HAL_GetTick());
+		osDelay(1);
+	}
 }
 
 /**
