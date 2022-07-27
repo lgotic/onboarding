@@ -22,7 +22,7 @@
 #include "main.h"
 #include "stm32f4xx_it.h"
 #include "FreeRTOS.h"
-#include "task.h"
+#include "queue.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
@@ -54,7 +54,7 @@
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+extern QueueHandle_t meniSelectedQueue;
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -67,7 +67,7 @@ extern TIM_HandleTypeDef htim6;
 /* USER CODE END EV */
 
 /******************************************************************************/
-/*           Cortex-M4 Processor Interruption and Exception Handlers          */ 
+/*           Cortex-M4 Processor Interruption and Exception Handlers          */
 /******************************************************************************/
 /**
   * @brief This function handles Non maskable interrupt.
@@ -163,6 +163,20 @@ void DebugMon_Handler(void)
 /******************************************************************************/
 
 /**
+  * @brief This function handles EXTI line4 interrupt.
+  */
+void EXTI4_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI4_IRQn 0 */
+
+  /* USER CODE END EXTI4_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(buttonPush_Pin);
+  /* USER CODE BEGIN EXTI4_IRQn 1 */
+
+  /* USER CODE END EXTI4_IRQn 1 */
+}
+
+/**
   * @brief This function handles TIM6 global interrupt, DAC1 and DAC2 underrun error interrupts.
   */
 void TIM6_DAC_IRQHandler(void)
@@ -204,7 +218,24 @@ void DMA2D_IRQHandler(void)
   /* USER CODE END DMA2D_IRQn 1 */
 }
 
-/* USER CODE BEGIN 1 */
+/**
+ * 	@brief  EXTI line detection callbacks.
+ * 	@param GPIO_Pin  Specifies the pins connected EXTI line
+ */
 
+/* USER CODE BEGIN 1 */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	static uint8_t buttonPressed = 0;
+	if ( GPIO_Pin == buttonPush_Pin) {
+		if  (buttonPressed == 0 ) {
+			buttonPressed = 1;
+			xQueueSendFromISR(meniSelectedQueue, (void*)&buttonPressed, 0);
+
+		}
+		else {
+			buttonPressed = 0;
+		}
+	}
+}
 /* USER CODE END 1 */
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
