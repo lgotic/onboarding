@@ -1,9 +1,8 @@
 #include <gui/screen2_screen/Screen2View.hpp>
 #include <string.h>
+#include "main.h"
 extern "C" {
-	extern uint8_t airFryerStatus[20];
-	extern uint8_t airFryerTemperature;
-	extern uint8_t airFryerHumidity;
+	extern struct airFryer fryer;
 }
 
 Screen2View::Screen2View()
@@ -25,16 +24,16 @@ void Screen2View::tearDownScreen()
 }
 
 void Screen2View::screenUpdate() {
-	 Unicode::snprintf(textAreaTemperatureBuffer, TEXTAREATEMPERATURE_SIZE, "%03d", airFryerTemperature);
+	 Unicode::snprintf(textAreaTemperatureBuffer, TEXTAREATEMPERATURE_SIZE, "%03d", fryer.Temperature);
 	 textAreaTemperature.invalidate();
 
-	 Unicode::snprintf(textAreaHumidityBuffer, TEXTAREAHUMIDITY_SIZE, "%03d", airFryerHumidity);
+	 Unicode::snprintf(textAreaHumidityBuffer, TEXTAREAHUMIDITY_SIZE, "%03d", fryer.Humidity);
 	 textAreaHumidity.invalidate();
 
 	 //Unicode::snprintf(textArea1Buffer, TEXTAREA1_SIZE, "%d", airFryerStatus);
 
 	 for ( int i = 0 ; i < 5; i ++) {
-		 textArea1Buffer[i] = (const char)airFryerStatus[i];
+		 textArea1Buffer[i] = (const char)fryer.Status[i];
 	 }
 	 for ( int i = 5; i < 10; i++ ) {
 		 textArea1Buffer[i] = 0x00;

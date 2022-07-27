@@ -42,7 +42,11 @@ extern "C" {
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
-
+struct airFryer {
+	uint8_t Status[20];
+	uint8_t Temperature;
+	uint8_t Humidity;
+};
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/

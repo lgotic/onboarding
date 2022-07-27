@@ -21,7 +21,8 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "app_touchgfx.h"
-
+#include "semphr.h"
+#include "queue.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "Components/ili9341/ili9341.h"
@@ -58,6 +59,8 @@
 
 #define I2C3_TIMEOUT_MAX                    0x3000 /*<! The value of the maximal timeout for I2C waiting loops */
 #define SPI5_TIMEOUT_MAX                    0x1000
+
+#define DMA_BUFFER_SIZE 					(uint8_t)500u
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -257,22 +260,26 @@ uint8_t *stringArray;
 uint8_t jsonRecived = FALSE;
 
 // buffer for DMA UART receive and buffer counter
-uint8_t dmaStringIn[500] = {0};
+uint8_t dmaStringIn[DMA_BUFFER_SIZE] = {0};
 uint16_t dmaStringCounter = 0;
 
-uint8_t airFryerStatus[20] = {0};
-uint8_t airFryerTemperature = 0;
-uint8_t airFryerHumidity = 0;
+xSemaphoreHandle jsonArivedSemaphore = FALSE;
+
+
+
+static const uint8_t airFryerQueueLength = 1;
+QueueHandle_t airFryerQueue;
 
 uint8_t tx_buff[] = {0,1,2,3,4,5,6,7,8,9};
 uint8_t rx_buff[2];
 
-
-int supports_full_hd(const char * const monitor)
+struct airFryer fryer;
+int GetJsonValues(const char * const monitor)
 {
     const cJSON *afHum = NULL;
     const cJSON *afTemp = NULL;
     const cJSON *afStatus = NULL;
+    struct airFryer fryerLocal;
     cJSON *monitor_json = cJSON_Parse(monitor);
     if (monitor_json == NULL)
     {
@@ -287,15 +294,16 @@ int supports_full_hd(const char * const monitor)
     afStatus = cJSON_GetObjectItemCaseSensitive(monitor_json, "status");
     if (cJSON_IsString(afStatus) && (afStatus->valuestring != NULL))
     {
-    	memcpy(airFryerStatus,afStatus->valuestring,strlen(afStatus->valuestring));
+    	memcpy(fryerLocal.Status,afStatus->valuestring,strlen(afStatus->valuestring));
     }
     afHum = cJSON_GetObjectItemCaseSensitive(monitor_json, "humidity");
-    airFryerHumidity = afHum->valueint;
+    fryerLocal.Humidity = afHum->valueint;
 
     afTemp = cJSON_GetObjectItemCaseSensitive(monitor_json, "temp");
-    airFryerTemperature = afTemp->valueint;
+    fryerLocal.Temperature = afTemp->valueint;
 
     cJSON_Delete(monitor_json);
+    xQueueSend(airFryerQueue,(void*)&fryerLocal,10);
     return 1;
 }
 
@@ -357,7 +365,7 @@ int main(void)
   /* USER CODE END RTOS_MUTEX */
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
-  /* add semaphores, ... */
+  vSemaphoreCreateBinary(jsonArivedSemaphore);
   /* USER CODE END RTOS_SEMAPHORES */
 
   /* USER CODE BEGIN RTOS_TIMERS */
@@ -365,7 +373,7 @@ int main(void)
   /* USER CODE END RTOS_TIMERS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
-  /* add queues, ... */
+  airFryerQueue = xQueueCreate(airFryerQueueLength, sizeof(struct airFryer));
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
@@ -883,7 +891,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 			jsonCloseCounter++;
 		}
 		if (isJSON == TRUE && jsonOpenCounter == jsonCloseCounter) {
-			jsonRecived = TRUE;
+			xSemaphoreGiveFromISR(jsonArivedSemaphore,100);
+
+			//jsonRecived = TRUE;
 			isJSON = FALSE;
 		}
 		dmaStringCounter++;
@@ -1228,16 +1238,15 @@ void Button_Task(void *argument)
 {
 
 	jsonString = create_monitor();
-	//supports_full_hd(jsonString);
- //*jsonString = create_monitor();
+
   for(;;)
   {
-	  if (jsonRecived == TRUE) {
-		  jsonRecived = FALSE;
+	  if (xSemaphoreTake(jsonArivedSemaphore,100)) {
+
 		  strcpy(jsonString,dmaStringIn);
 		  dmaStringCounter = 0;
 		  memset(dmaStringIn,'\0',strlen(dmaStringIn));
-		  supports_full_hd(jsonString);
+		  GetJsonValues(jsonString);
 	  }
 
 	  meniScroller = __HAL_TIM_GET_COUNTER(&htim2);
