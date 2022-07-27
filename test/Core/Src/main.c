@@ -21,7 +21,7 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "app_touchgfx.h"
-
+#include "queue.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "Components/ili9341/ili9341.h"
@@ -143,9 +143,13 @@ static LCD_DrvTypeDef* LcdDrv;
 uint32_t I2c3Timeout = I2C3_TIMEOUT_MAX; /*<! Value of Timeout when I2C communication fails */  
 uint32_t Spi5Timeout = SPI5_TIMEOUT_MAX; /*<! Value of Timeout when SPI communication fails */
 
+static const uint8_t meniScrollerQueueLength = 1;
+QueueHandle_t meniScrollerQueue;
 
-uint8_t meniScroller = 0;
-uint8_t meniSelect = 0;
+static const uint8_t meniSelectedQueueLength = 1;
+QueueHandle_t meniSelectedQueue;
+
+
 /* USER CODE END 0 */
 
 /**
@@ -194,7 +198,8 @@ int main(void)
   osKernelInitialize();
 
   /* USER CODE BEGIN RTOS_MUTEX */
-  /* add mutexes, ... */
+  meniScrollerQueue = xQueueCreate(meniScrollerQueueLength, sizeof(uint8_t));
+  meniSelectedQueue = xQueueCreate(meniSelectedQueueLength, sizeof(uint8_t));
   /* USER CODE END RTOS_MUTEX */
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
@@ -986,9 +991,9 @@ void Button_Task(void *argument)
 
   for(;;)
   {
+	  xQueueSend(meniScrollerQueue, (void*)&__HAL_TIM_GET_COUNTER(&htim2),2);
 
-	  meniScroller = __HAL_TIM_GET_COUNTER(&htim2);
-	    osDelay(1);
+	    osDelay(100);
   }
 
 }

@@ -21,6 +21,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f4xx_it.h"
+#include "FreeRTOS.h"
+#include "queue.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
@@ -52,7 +54,7 @@
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-extern uint8_t meniSelect;
+extern QueueHandle_t meniSelectedQueue;
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -216,11 +218,24 @@ void DMA2D_IRQHandler(void)
   /* USER CODE END DMA2D_IRQn 1 */
 }
 
+/**
+ * 	@brief  EXTI line detection callbacks.
+ * 	@param GPIO_Pin  Specifies the pins connected EXTI line
+ */
+
 /* USER CODE BEGIN 1 */
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	static uint8_t buttonPressed = 0;
 	if ( GPIO_Pin == buttonPush_Pin) {
-		if  (meniSelect == 0 ) meniSelect = 1;
-		else meniSelect = 0;
+		if  (buttonPressed == 0 ) {
+			buttonPressed = 1;
+			xQueueSendFromISR(meniSelectedQueue, (void*)&buttonPressed, 0);
+
+		}
+		else {
+			buttonPressed = 0;
+		}
 	}
 }
 /* USER CODE END 1 */

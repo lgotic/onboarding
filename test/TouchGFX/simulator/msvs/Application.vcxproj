@@ -22,7 +22,6 @@
     <ClCompile Include="..\..\gui\src\model\Model.cpp"/>
     <ClCompile Include="..\..\gui\src\screen1_screen\Screen1Presenter.cpp"/>
     <ClCompile Include="..\..\gui\src\screen1_screen\Screen1View.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp"/>
     <ClCompile Include="..\..\generated\simulator\src\video\SoftwareMJPEGDecoder.cpp"/>
     <ClCompile Include="..\..\gui\src\screen2_screen\Screen2Presenter.cpp"/>
     <ClCompile Include="..\..\gui\src\screen2_screen\Screen2View.cpp"/>
@@ -39,6 +38,7 @@
     <ClCompile Include="..\..\gui\src\screen6_screen\Screen6Presenter.cpp"/>
     <ClCompile Include="..\..\gui\src\screen6_screen\Screen6View.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\screen6_screen\Screen6ViewBase.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -189,7 +189,6 @@
     <ClInclude Include="..\..\gui\include\gui\model\ModelListener.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\screen1_screen\Screen1Presenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\screen1_screen\Screen1View.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen1_screen\Screen1ViewBase.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp"/>
     <ClInclude Include="..\..\generated\simulator\include\simulator\video\SoftwareMJPEGDecoder.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\screen2_screen\Screen2Presenter.hpp"/>
@@ -207,6 +206,7 @@
     <ClInclude Include="..\..\gui\include\gui\screen6_screen\Screen6Presenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\screen6_screen\Screen6View.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen6_screen\Screen6ViewBase.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen1_screen\Screen1ViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>
