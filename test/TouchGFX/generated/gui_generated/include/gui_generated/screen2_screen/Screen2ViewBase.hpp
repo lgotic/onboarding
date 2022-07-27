@@ -8,6 +8,7 @@
 #include <mvp/View.hpp>
 #include <gui/screen2_screen/Screen2Presenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
 class Screen2ViewBase : public touchgfx::View<Screen2Presenter>
 {
@@ -26,7 +27,19 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box box1;
-    touchgfx::Box box2;
+    touchgfx::TextAreaWithOneWildcard textArea1;
+    touchgfx::TextAreaWithOneWildcard textAreaTemperature;
+    touchgfx::TextAreaWithOneWildcard textAreaHumidity;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t TEXTAREA1_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textArea1Buffer[TEXTAREA1_SIZE];
+    static const uint16_t TEXTAREATEMPERATURE_SIZE = 4;
+    touchgfx::Unicode::UnicodeChar textAreaTemperatureBuffer[TEXTAREATEMPERATURE_SIZE];
+    static const uint16_t TEXTAREAHUMIDITY_SIZE = 4;
+    touchgfx::Unicode::UnicodeChar textAreaHumidityBuffer[TEXTAREAHUMIDITY_SIZE];
 
 private:
 
