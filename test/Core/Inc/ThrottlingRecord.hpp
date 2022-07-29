@@ -14,6 +14,11 @@
  * \brief ThrottlingRecord class in an entry for one event throttling
  */
 
+#define TRUE  					1
+#define FALSE 					0
+
+
+
 namespace Event {
 
 	enum Type {

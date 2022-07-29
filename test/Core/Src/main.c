@@ -343,7 +343,9 @@ int parseNutrimaxJsonString(const char * const monitor)
 }
 
 uint8_t getThrottling (uint8_t eventType);
+void resetThrottlingTime (uint8_t eventType);
 void timeForThrottling (uint32_t time);
+
 /* USER CODE END 0 */
 
 /**
@@ -1340,6 +1342,7 @@ void Button_Task(void *argument)
 		//meniScroller = __HAL_TIM_GET_COUNTER(&htim2);
 		shouldTrottle = getThrottling (1);
 		if (shouldTrottle) {
+			resetThrottlingTime(1);
 			meniScroller++;
 			if ( meniScroller == 5) meniScroller = 0;
 		}
@@ -1352,6 +1355,7 @@ void Button_Task(void *argument)
 			//meniScroller = __HAL_TIM_GET_COUNTER(&htim2);
 			shouldTrottle = getThrottling (2);
 			if (shouldTrottle) {
+				resetThrottlingTime(2);
 				meniScroller--;
 				if ( meniScroller == 0xff) meniScroller = 4;
 			}

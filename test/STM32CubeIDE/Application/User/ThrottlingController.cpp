@@ -6,10 +6,11 @@
  */
 
 #include "ThrottlingController.hpp"
-
+#define TOTAL_EVENT_NUMBER 		3
 
 extern "C" uint8_t getThrottling (uint8_t eventType);
 extern "C" void timeForThrottling (uint32_t time);
+extern "C" void resetThrottlingTime(uint8_t eventType);
 /*
 ThrottlingController::updateTimes(uint32_t inc) {
 }
@@ -22,8 +23,18 @@ ThrottlingController::ThrottlingController(){
 }
 
 bool ThrottlingController::shuldThrottle(Event::Type eventType) {
-	bool throttling = throttlingRecords[eventType].shuldThrottle();
+	/*bool throttling = throttlingRecords[eventType].shuldThrottle();
 	return throttling;
+*/
+	//bool throttling = FALSE;
+	volatile bool throttling = FALSE;
+	volatile uint8_t arrayPosition = 0 ;
+	while (throttlingRecords[arrayPosition].getEventType() != eventType) {
+		arrayPosition++;
+	}
+	 throttling =  throttlingRecords[arrayPosition].shuldThrottle();
+	 return throttling;
+
 }
 
 void ThrottlingController::markAsSent(Event::Type eventType){
@@ -32,10 +43,10 @@ void ThrottlingController::markAsSent(Event::Type eventType){
 
 void ThrottlingController::updateTimes(uint32_t inc){
 	uint32_t curentTime = 0;
-	for ( int eventCounter = 0 ; eventCounter < 3 ; eventCounter ++ ) {
-		curentTime = throttlingRecords[eventCounter].getPassedTime();
+	for (auto& objNumber: throttlingRecords) {
+		curentTime = objNumber.getPassedTime();
 		curentTime = curentTime + inc;
-		throttlingRecords[eventCounter].setPassedTime(curentTime);
+		objNumber.setPassedTime(curentTime);
 	}
 }
 
@@ -51,19 +62,19 @@ uint8_t getThrottling (uint8_t eventType) {
 	bool throttling = 0 ;
 	if ( eventType == Event::BUTTON_PRESSED){
 		throttling = tc.shuldThrottle(Event::BUTTON_PRESSED);
-		if ( throttling == 1) {
+		if ( throttling == TRUE) {
 			tc.markAsSent(Event::BUTTON_PRESSED);
 		}
 	}
 	else if (eventType == Event::THROTTLING_DOWN){
 		throttling = tc.shuldThrottle(Event::THROTTLING_DOWN);
-		if ( throttling == 1) {
+		if ( throttling == TRUE) {
 			tc.markAsSent(Event::THROTTLING_DOWN);
 		}
 	}
 	else if ( eventType == Event::THROTTLING_UP){
 		throttling = tc.shuldThrottle(Event::THROTTLING_UP);
-		if ( throttling == 1) {
+		if ( throttling == TRUE) {
 			tc.markAsSent(Event::THROTTLING_UP);
 		}
 	}
@@ -71,3 +82,8 @@ uint8_t getThrottling (uint8_t eventType) {
 	return throttling;
 }
 
+void resetThrottlingTime (uint8_t eventType) {
+
+	tc.markAsSent((Event::Type)eventType);
+
+}

@@ -9,8 +9,6 @@
 
 
 
-
-
 ThrottlingRecord::ThrottlingRecord(Event::Type eventType, uint32_t throttleTime) : eventType(eventType), throttleTime(throttleTime) {
 
 }
@@ -27,16 +25,18 @@ uint32_t ThrottlingRecord::getPassedTime() {
 }
 
 Event::Type ThrottlingRecord::getEventType() {
-	Event::Type novaVariabla = Event::BUTTON_PRESSED;
-	return novaVariabla;
+
+	return eventType;
 }
 
 bool ThrottlingRecord::shuldThrottle() {
+	volatile bool shouldThrottle = FALSE;
+
 	if ( passedTimeCont > throttleTime) {
-		return 1;
+		shouldThrottle = TRUE;
 	}
 	else {
-		return 0;
+		shouldThrottle = FALSE;
 	}
-
+	return shouldThrottle;
 }
