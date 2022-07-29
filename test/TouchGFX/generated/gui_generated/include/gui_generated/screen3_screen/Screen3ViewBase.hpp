@@ -8,6 +8,7 @@
 #include <mvp/View.hpp>
 #include <gui/screen3_screen/Screen3Presenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
 class Screen3ViewBase : public touchgfx::View<Screen3Presenter>
 {
@@ -26,7 +27,19 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box box1;
-    touchgfx::Box box2;
+    touchgfx::TextAreaWithOneWildcard nutrimaxStatus;
+    touchgfx::TextAreaWithOneWildcard nutrimaxTemp;
+    touchgfx::TextAreaWithOneWildcard nutrimaxHum;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t NUTRIMAXSTATUS_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar nutrimaxStatusBuffer[NUTRIMAXSTATUS_SIZE];
+    static const uint16_t NUTRIMAXTEMP_SIZE = 4;
+    touchgfx::Unicode::UnicodeChar nutrimaxTempBuffer[NUTRIMAXTEMP_SIZE];
+    static const uint16_t NUTRIMAXHUM_SIZE = 3;
+    touchgfx::Unicode::UnicodeChar nutrimaxHumBuffer[NUTRIMAXHUM_SIZE];
 
 private:
 

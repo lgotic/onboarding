@@ -307,10 +307,49 @@
             }
           },
           {
-            "Type": "Box",
-            "Name": "box2",
-            "Width": 50,
-            "Height": 50
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "Y": 64,
+            "Width": 255,
+            "Height": 24,
+            "TextId": "__SingleUse_ROVU",
+            "TextRotation": "0",
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_Y6B2",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textAreaTemperature",
+            "Y": 97,
+            "Width": 181,
+            "Height": 24,
+            "TextId": "__SingleUse_5WBR",
+            "TextRotation": "0",
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_2MDP",
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textAreaHumidity",
+            "Y": 136,
+            "Width": 135,
+            "Height": 24,
+            "TextId": "__SingleUse_29FL",
+            "TextRotation": "0",
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_3LHD",
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
           }
         ],
         "Interactions": []
@@ -324,17 +363,53 @@
             "Width": 240,
             "Height": 320,
             "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
+              "Red": 255
             }
           },
           {
-            "Type": "Box",
-            "Name": "box2",
-            "X": 190,
-            "Width": 50,
-            "Height": 50
+            "Type": "TextArea",
+            "Name": "nutrimaxStatus",
+            "Y": 43,
+            "Width": 199,
+            "Height": 24,
+            "TextId": "__SingleUse_P2C9",
+            "TextRotation": "0",
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_YQ7R",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "nutrimaxTemp",
+            "Y": 67,
+            "Width": 119,
+            "Height": 24,
+            "TextId": "__SingleUse_KVT1",
+            "TextRotation": "0",
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_8W77",
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "nutrimaxHum",
+            "Y": 91,
+            "Width": 99,
+            "Height": 24,
+            "TextId": "__SingleUse_TPZY",
+            "TextRotation": "0",
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_R1HY",
+              "UseBuffer": true,
+              "BufferSize": 3
+            }
           }
         ],
         "Interactions": []

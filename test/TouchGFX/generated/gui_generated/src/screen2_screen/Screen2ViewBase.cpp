@@ -3,6 +3,7 @@
 /*********************************************************************************/
 #include <gui_generated/screen2_screen/Screen2ViewBase.hpp>
 #include <touchgfx/Color.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 Screen2ViewBase::Screen2ViewBase()
 {
@@ -13,12 +14,35 @@ Screen2ViewBase::Screen2ViewBase()
     box1.setPosition(0, 0, 240, 320);
     box1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
 
-    box2.setPosition(0, 0, 50, 50);
-    box2.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textArea1.setXY(0, 64);
+    textArea1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textArea1.setLinespacing(0);
+    Unicode::snprintf(textArea1Buffer, TEXTAREA1_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_Y6B2).getText());
+    textArea1.setWildcard(textArea1Buffer);
+    textArea1.resizeToCurrentText();
+    textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_ROVU));
+
+    textAreaTemperature.setXY(0, 97);
+    textAreaTemperature.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaTemperature.setLinespacing(0);
+    Unicode::snprintf(textAreaTemperatureBuffer, TEXTAREATEMPERATURE_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_2MDP).getText());
+    textAreaTemperature.setWildcard(textAreaTemperatureBuffer);
+    textAreaTemperature.resizeToCurrentText();
+    textAreaTemperature.setTypedText(touchgfx::TypedText(T___SINGLEUSE_5WBR));
+
+    textAreaHumidity.setXY(0, 136);
+    textAreaHumidity.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaHumidity.setLinespacing(0);
+    Unicode::snprintf(textAreaHumidityBuffer, TEXTAREAHUMIDITY_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_3LHD).getText());
+    textAreaHumidity.setWildcard(textAreaHumidityBuffer);
+    textAreaHumidity.resizeToCurrentText();
+    textAreaHumidity.setTypedText(touchgfx::TypedText(T___SINGLEUSE_29FL));
 
     add(__background);
     add(box1);
-    add(box2);
+    add(textArea1);
+    add(textAreaTemperature);
+    add(textAreaHumidity);
 }
 
 void Screen2ViewBase::setupScreen()
